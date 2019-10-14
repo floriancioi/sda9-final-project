@@ -31,7 +31,7 @@ public class UserController {
      u.setPassword("aaa");
      userRepository.save(u);
       model.addAttribute("users", users);
-      return "index";
+      return "users-list";
     }
 
 
