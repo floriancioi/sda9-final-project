@@ -21,11 +21,6 @@ public class User {
     @NotBlank(message = "Password is mandatory")
     private String password;
 
-    public User(@NotBlank(message = "Name is mandatory") String name, @NotBlank(message = "Password is mandatory") String password) {
-        this.name = name;
-        this.password = password;
-    }
-
     @Override
     public String toString() {
         return "User{" +
