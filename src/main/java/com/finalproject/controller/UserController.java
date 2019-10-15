@@ -34,5 +34,26 @@ public class UserController {
       return "users-list";
     }
 
+    @GetMapping("/home")
+    public String homePage(User user) {
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String logInForm(User user) {
+        return "user-login";
+    }
+
+    @GetMapping("/register")
+    public String registerForm(User user) {
+        return "user-register";
+    }
+
+    @GetMapping("/contact")
+    public String contactForm(User user) {
+        return "user-contact";
+    }
+
+
 
 }
