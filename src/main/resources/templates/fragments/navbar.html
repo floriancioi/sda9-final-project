@@ -2,10 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <nav th:fragment="navbar" class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
-    <div>
-        <img th:src="@{/img/logo.jpg}" width="50" height="50" class="rounded float-lg-right" alt="...">
+    <!-- SideNav slide-out button -->
+    <div class="float-left">
+        <a href="#" data-activates="slide-out" class="button-collapse"/>
     </div>
+    <!-- Breadcrumb-->
+    <div class="breadcrumb-dn mr-auto">
+        <p></p>
+    </div>
+
+    <img th:src="@{/img/logo.jpg }" style="width:50px;height:50px;"  class="rounded float-left" alt="...">
+
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
+
         <li class="nav-item">
             <a th:href="@{/home}" class="nav-link"><i class="fas fa-home"></i> <span class="clearfix d-none d-sm-inline-block">Home</span></a> </a>
         </li>
@@ -13,10 +22,8 @@
             <a th:href="@{/contact}" class="nav-link"><i class="fas fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Contact Us</span></a>
         </li>
         <li class="nav-item">
-            <a th:href="@{/register}" class="nav-link"><i class="fas fa-register"></i> <span class="clearfix d-none d-sm-inline-block">Register</span></a>
-        </li>
-        <li class="nav-item">
             <a th:href="@{/login}"class="nav-link"><i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Log In</span></a>
         </li>
     </ul>
 </nav>
+
