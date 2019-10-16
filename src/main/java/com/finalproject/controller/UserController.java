@@ -1,7 +1,7 @@
 package com.finalproject.controller;
 
 import com.finalproject.entities.User;
-import com.finalproject.repositories.UserRepository;
+import com.finalproject.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +11,11 @@ import java.util.List;
 
 @Controller
 public class UserController {
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository){
-        this.userRepository = userRepository;
+    public UserController(UserService userService){
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -25,11 +25,11 @@ public class UserController {
 
     @GetMapping("/userslist")
     public String showLogInForm(Model model) {
-     List<User> users = userRepository.findAll();
+     List<User> users = userService.findAll();
      User u = new User();
      u.setName("firstuser");
      u.setPassword("aaa");
-     userRepository.save(u);
+     userService.addUser(u);
       model.addAttribute("users", users);
       return "users-list";
     }
