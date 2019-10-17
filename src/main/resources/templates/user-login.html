@@ -11,7 +11,7 @@
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="fixed-sn mdb-skin">
+<body>
 <nav th:replace="fragments/navbar.html :: navbar"/>
 
 <div>
@@ -47,14 +47,6 @@
         <p>Not a member?
             <a th:href="@{/register}">Register</a>
         </p>
-        <!-- Social login -->
-        <p>or sign in with:</p>
-
-        <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-        <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-        <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-        <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-
     </form>
 </div>
 <!-- Default form login -->
