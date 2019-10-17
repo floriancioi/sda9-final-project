@@ -1,28 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<nav th:fragment="navbar" class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
-    <!-- SideNav slide-out button -->
-    <div class="float-left">
-        <a href="#" data-activates="slide-out" class="button-collapse"/>
-    </div>
-    <!-- Breadcrumb-->
-    <div class="breadcrumb-dn mr-auto">
-        <p></p>
-    </div>
-
-    <img th:src="@{/img/piggybank.jpg }" style="width:40px;height:40px;" class="rounded float-left" alt="..."><i class="fas fa"></i> <span class="clearfix d-none d-sm-inline-block"><strong>Welcome to Little Piggy Bank</strong></span>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light">
+    <img src="/img/piggybank.jpg" style="width:40px;height:40px;" class="rounded float-left" alt="..."><span class="clearfix d-none d-sm-inline-block navbar-message color-CF6CC8">Welcome to Little Piggy Bank</span>
 
     <ul class="nav navbar-nav nav-flex-icons ml-auto">
-
         <li class="nav-item">
-            <a th:href="@{/home}" class="nav-link"><i class="fas fa-home"></i> <span class="clearfix d-none d-sm-inline-block">Home</span></a> </a>
+            <a th:href="@{/home}" class="nav-link"><i class="fas fa-home color-CF6CC8"></i> <span class="clearfix d-none d-sm-inline-block color-CF6CC8">Home</span></a>
         </li>
         <li class="nav-item">
-            <a th:href="@{/contact}" class="nav-link"><i class="fas fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Contact Us</span></a>
+            <a th:href="@{/contact}" class="nav-link"><i class="fas fa-comments color-CF6CC8"></i> <span class="clearfix d-none d-sm-inline-block color-CF6CC8">Contact Us</span></a>
         </li>
         <li class="nav-item">
-            <a th:href="@{/login}"class="nav-link"><i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Log In</span></a>
+            <a th:href="@{/login}" class="nav-link"><i class="fas fa-user color-CF6CC8"></i> <span class="clearfix d-none d-sm-inline-block color-CF6CC8">Log In</span></a>
         </li>
     </ul>
 </nav>

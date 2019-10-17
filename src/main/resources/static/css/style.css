@@ -1,3 +1,26 @@
-body{
-    background-color: cornsilk;
+/*https://mycolor.space/?hex=%23CBB5C8&sub=1*/
+html, body{
+    height: 100%;
+    overflow: hidden;
+}
+.home-container{
+    background-image: url("/img/piggybanksbackground.jpg");
+    background-size: cover;
+    height: 100%;
+    min-height: 100%;
+}
+.navbar{
+    background-color: #FFF6FF;
+}
+.navbar-message{
+    font-weight: bold;
+}
+.home-greeting-message{
+    font-size: 50px;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.color-CF6CC8{
+    color: #CF6CC8;
 }
