@@ -30,8 +30,8 @@ public class UserController {
     public String showLogInForm(Model model) {
      List<User> users = userService.findAll();
      User u = new User();
-     u.setName("firstuser");
-     u.setPassword("aaa");
+     u.setName("a");
+     u.setPassword("a");
      userService.addUser(u);
       model.addAttribute("users", users);
       return "users-list";
@@ -42,15 +42,12 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String logInForm(User user) {
-        return "user-login";
-    }
-
     @GetMapping("/register")
     public String registerForm(User user) {
         return "user-register";
     }
+
+
 
     @GetMapping("/contact")
     public String contactForm(User user) {
