@@ -15,20 +15,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotBlank(message = "Name is mandatory")
-    private String name;
+//    @NotBlank(message = "First name is mandatory")
+    private String firstName;
 
-    @NotBlank(message = "Password is mandatory")
+//    @NotBlank(message = "Last name is mandatory")
+    private String lastName;
+
+//    @NotBlank(message = "Password is mandatory")
     private String password;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+//    @NotBlank(message = "Email is mandatory")
+    private String email;
+
+//    @NotBlank(message = "Phome number is mandatory")
+    private String phoneNumber;
+
+//    @NotBlank(message = "Username is mandatory")
+    private String userName;
 
     public long getId() {
         return id;
@@ -38,12 +41,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {
@@ -53,4 +64,42 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstname='" + firstName + '\'' +
+                ", password='" + password + '\'' +
+                ", lastname='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phonenumber='" + phoneNumber + '\'' +
+                ", username='" + userName + '\'' +
+                '}';
+    }
+
 }

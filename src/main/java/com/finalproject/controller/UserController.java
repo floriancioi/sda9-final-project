@@ -5,10 +5,7 @@ import com.finalproject.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,8 +27,13 @@ public class UserController {
     public String showLogInForm(Model model) {
      List<User> users = userService.findAll();
      User u = new User();
-     u.setName("a");
+     u.setFirstName("a");
+     u.setLastName("a");
      u.setPassword("a");
+     u.setPhoneNumber("a");
+     u.setEmail("a@a.ro");
+     u.setUserName("a");
+
      userService.addUser(u);
       model.addAttribute("users", users);
       return "users-list";
@@ -43,8 +45,15 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String registerForm(User user) {
+    public String registerForm(Model model) {
+        User user=new User();
+        model.addAttribute("user",user);
         return "user-register";
+    }
+    @PostMapping("/register")
+    public String register(User user){
+        userService.addUser(user);
+        return "login";
     }
 
 

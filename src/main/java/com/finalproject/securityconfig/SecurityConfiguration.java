@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.annotation.Resource;
 
@@ -25,6 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests().antMatchers("/login", "/logout").permitAll()
                 .and().authorizeRequests().antMatchers("/admin").authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/user-account").permitAll();
+//                .and().formLogout().logout("/login?logout").defaultSuccessUrl("/user-account");
 
         http.csrf().disable();
         http.headers().frameOptions().disable(); //H2 console runs inside a frame so we need to disable it from spring security.
