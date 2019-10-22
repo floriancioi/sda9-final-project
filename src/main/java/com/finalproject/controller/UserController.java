@@ -37,7 +37,7 @@ public class UserController {
       return "users-list";
     }
 
-    @GetMapping("/home")
+       @GetMapping("/home")
     public String homePage(User user) {
         return "index";
     }
@@ -52,6 +52,11 @@ public class UserController {
     @GetMapping("/contact")
     public String contactForm(User user) {
         return "user-contact";
+    }
+
+    @GetMapping("/user-account")
+    public String userAccountForm(User user) {
+        return "user-account";
     }
 
 
