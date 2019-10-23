@@ -2,11 +2,13 @@ package com.finalproject.controller;
 
 import com.finalproject.entities.User;
 import com.finalproject.users.UserService;
+import org.hibernate.criterion.NullExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Null;
 import java.util.List;
 
 @Controller
@@ -23,21 +25,21 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/userslist")
-    public String showLogInForm(Model model) {
-     List<User> users = userService.findAll();
-     User u = new User();
-     u.setFirstName("a");
-     u.setLastName("a");
-     u.setPassword("a");
-     u.setPhoneNumber("a");
-     u.setEmail("a@a.ro");
-     u.setUserName("a");
-
-     userService.addUser(u);
-      model.addAttribute("users", users);
-      return "users-list";
-    }
+//    @GetMapping("/userslist")
+//    public String showLogInForm(Model model) {
+//     List<User> users = userService.findAll();
+//     User u = new User();
+//     u.setFirstName("a");
+//     u.setLastName("a");
+//     u.setPassword("a");
+//     u.setPhoneNumber("a");
+//     u.setEmail("a@a.ro");
+//     u.setUserName("a");
+//
+//     userService.addUser(u);
+//      model.addAttribute("users", users);
+//      return "users-list";
+//    }
 
        @GetMapping("/home")
     public String homePage(User user) {

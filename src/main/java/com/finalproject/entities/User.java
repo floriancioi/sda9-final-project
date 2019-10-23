@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+
 
 @Entity
 public class User {
@@ -15,22 +15,35 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-//    @NotBlank(message = "First name is mandatory")
+    //    @NotBlank(message = "First name is mandatory")
     private String firstName;
 
-//    @NotBlank(message = "Last name is mandatory")
+    //    @NotBlank(message = "Last name is mandatory")
     private String lastName;
 
-//    @NotBlank(message = "Password is mandatory")
+    //    @NotBlank(message = "Password is mandatory")
     private String password;
 
-//    @NotBlank(message = "Email is mandatory")
+    //    @NotBlank(message = "Email is mandatory")
     private String email;
 
-//    @NotBlank(message = "Phome number is mandatory")
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
+
+    //    @NotBlank(message = "Phome number is mandatory")
     private String phoneNumber;
 
-//    @NotBlank(message = "Username is mandatory")
+    //    @NotBlank(message = "Username is mandatory")
     private String userName;
 
     public long getId() {
@@ -88,18 +101,4 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstname='" + firstName + '\'' +
-                ", password='" + password + '\'' +
-                ", lastname='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phonenumber='" + phoneNumber + '\'' +
-                ", username='" + userName + '\'' +
-                '}';
-    }
-
 }
