@@ -1,15 +1,15 @@
 package com.finalproject.entities;
 
 import jdk.nashorn.internal.objects.annotations.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 
 @Entity
 public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,24 +27,17 @@ public class User {
     //    @NotBlank(message = "Email is mandatory")
     private String email;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", userName='" + userName + '\'' +
-                '}';
-    }
-
     //    @NotBlank(message = "Phome number is mandatory")
     private String phoneNumber;
 
     //    @NotBlank(message = "Username is mandatory")
     private String userName;
+
+
+
+
+
+
 
     public long getId() {
         return id;
@@ -101,4 +94,30 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
+
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String updatedOn;
 }

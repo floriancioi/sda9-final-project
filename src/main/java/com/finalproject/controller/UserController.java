@@ -55,7 +55,7 @@ public class UserController {
     @PostMapping("/register")
     public String register(User user){
         userService.addUser(user);
-        return "login";
+        return "user-login";
     }
 
 
