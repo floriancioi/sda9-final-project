@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests().antMatchers("/login", "/logout").permitAll()
                 .and().authorizeRequests().antMatchers("/admin").authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/user-account").permitAll();
-//                .and().formLogout().logout("/login?logout").defaultSuccessUrl("/user-account");
+
 
         http.csrf().disable();
         http.headers().frameOptions().disable(); //H2 console runs inside a frame so we need to disable it from spring security.

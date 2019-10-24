@@ -1,10 +1,7 @@
 package com.finalproject.entities;
-
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.util.Collection;
+
 
 
 @Entity
@@ -32,6 +29,10 @@ public class User {
 
     //    @NotBlank(message = "Username is mandatory")
     private String userName;
+
+    public String getUpdatedOn() {
+        return updatedOn;
+    }
 
 
 
@@ -108,16 +109,23 @@ public class User {
                 '}';
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
 
+
+    public void setUpdatedOn(String updatedOn) {
+        this.updatedOn = updatedOn;
+    }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String updatedOn;
+
+    @Embedded
+    private UserAccount userAccount;
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
 }
