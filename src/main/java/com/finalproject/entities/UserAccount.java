@@ -1,7 +1,6 @@
 package com.finalproject.entities;
 
 
-import org.iban4j.Iban;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

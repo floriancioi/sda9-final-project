@@ -1,6 +1,7 @@
 package com.finalproject.controller;
 
 import com.finalproject.entities.User;
+import com.finalproject.entities.UserAccount;
 import com.finalproject.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,19 +33,19 @@ public class UserController {
      u.setPassword("a");
      u.setPhoneNumber("a");
      u.setEmail("a@a.ro");
-     u.setUsername("a");
+     u.setUserName("a");
 
      userService.addUser(u);
       model.addAttribute("users", users);
       return "users-list";
     }
 
-       @GetMapping("/home")
+    @GetMapping("/home")
     public String homePage(User user) {
         return "index";
     }
 
-      @GetMapping("/register")
+    @GetMapping("/register")
     public String registerForm(Model model) {
         User user=new User();
         model.addAttribute("user",user);
@@ -65,7 +66,10 @@ public class UserController {
         return "user-account";
     }
 
-
+    @GetMapping("/my_account")
+    public String myAccount(UserAccount userAccount) {
+        return "my_account";
+    }
 
 
 }
