@@ -1,6 +1,8 @@
 package com.finalproject.users;
 
+import com.finalproject.entities.Iban;
 import com.finalproject.entities.User;
+import com.finalproject.entities.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +27,11 @@ public class UserService implements UserDetailsService {
     public void addUser(User user) {
         String password = user.getPassword();
         user.setPassword(bCryptPasswordEncoder.encode(password));
+        UserAccount userAccount = new UserAccount();
+        userAccount.setBankAccount(new Iban("A","b", "c").toString());
+        user.setUserAccount(userAccount);
         userRepository.save(user);
+
     }
 
     public List<User> findAll(){

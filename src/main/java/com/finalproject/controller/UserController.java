@@ -44,7 +44,7 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/register")
+      @GetMapping("/register")
     public String registerForm(Model model) {
         User user=new User();
         model.addAttribute("user",user);
@@ -64,6 +64,7 @@ public class UserController {
     public String userAccountForm(User user) {
         return "user-account";
     }
+
 
 
 

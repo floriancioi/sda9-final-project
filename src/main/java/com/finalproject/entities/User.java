@@ -1,34 +1,44 @@
 package com.finalproject.entities;
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 @Entity
 public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-//    @NotBlank(message = "First name is mandatory")
+    //    @NotBlank(message = "First name is mandatory")
     private String firstName;
 
-//    @NotBlank(message = "Last name is mandatory")
+    //    @NotBlank(message = "Last name is mandatory")
     private String lastName;
 
-//    @NotBlank(message = "Password is mandatory")
+    //    @NotBlank(message = "Password is mandatory")
     private String password;
 
-//    @NotBlank(message = "Email is mandatory")
+    //    @NotBlank(message = "Email is mandatory")
     private String email;
 
-//    @NotBlank(message = "Phome number is mandatory")
+    //    @NotBlank(message = "Phome number is mandatory")
     private String phoneNumber;
 
-//    @NotBlank(message = "Username is mandatory")
-    private String username;
+    //    @NotBlank(message = "Username is mandatory")
+    private String userName;
+
+    public String getUpdatedOn() {
+        return updatedOn;
+    }
+
+
+
+
+
+
 
     public long getId() {
         return id;
@@ -78,25 +88,44 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", firstname='" + firstName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
-                ", lastname='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", phonenumber='" + phoneNumber + '\'' +
-                ", username='" + username + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 
+
+
+    public void setUpdatedOn(String updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private String updatedOn;
+
+    @Embedded
+    private UserAccount userAccount;
+
+    public UserAccount getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(UserAccount userAccount) {
+        this.userAccount = userAccount;
+    }
 }
