@@ -24,6 +24,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     public void addUser(User user) {
         String password = user.getPassword();
         user.setPassword(bCryptPasswordEncoder.encode(password));
@@ -31,16 +32,15 @@ public class UserService implements UserDetailsService {
         userAccount.setBankAccount(new Iban("A","b", "c").toString());
         user.setUserAccount(userAccount);
         userRepository.save(user);
-
     }
 
-    public List<User> findAll(){
+    public Iterable<User> findAll(){
         return userRepository.findAll();
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> byName = userRepository.findByFirstName(username);
+        Optional<User> byName = userRepository.findByUserName(username);
         if (!byName.isPresent()) {
             throw new UsernameNotFoundException("Username is invalid");
         }

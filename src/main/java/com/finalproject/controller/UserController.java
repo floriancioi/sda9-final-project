@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/userslist")
     public String showLogInForm(Model model) {
-     List<User> users = userService.findAll();
+     Iterable<User> users = userService.findAll();
      User u = new User();
      u.setFirstName("a");
      u.setLastName("a");
