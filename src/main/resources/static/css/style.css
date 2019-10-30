@@ -31,7 +31,7 @@ html, body{
     margin-top: 3%;
     height: 100%; /* Full-height: remove this if you want "auto" height */
     width: 250px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    /*position: fixed; !* Fixed Sidebar (stay in place on scroll) *!*/
     z-index: 1; /* Stay on top */
     top: 5px; /* Stay at the top */
     left: 0;
@@ -50,13 +50,13 @@ html, body{
     color: #f1f1f1;
 }
 
-.user-greeting-message {
-    font-size:5px;
-    margin-top: 5%;
-    margin-left: 200px ; /* Same as the width of the sidebar */
-    padding: 0 10px;
-    background-color: #fed6e3;
-}
+/*.user-greeting-message {*/
+/*    font-size:5px;*/
+/*    margin-top: 5%;*/
+/*    margin-left: 200px ; !* Same as the width of the sidebar *!*/
+/*    padding: 0 10px;*/
+/*    background-color: #fed6e3;*/
+/*}*/
 /*.dropbtn {*/
 /*    background-color: #fed6e3;*/
 /*    color:#CF6CC8;*/

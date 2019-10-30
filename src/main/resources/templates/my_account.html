@@ -17,15 +17,27 @@
 </head>
 
 <body>
-<div th:object="${authenticatedUser}">
-
-    <p th:text="*{userName}"> Welcome {{ name }} </p>
-
-    <div th:object="${userAccount}">
-        <p> Account Number {{ bankAccount }}</p>
-        <p th:text="*{iban}"> Account Number {{ bankAccount }}</p>
+<nav th:replace="fragments/navbar :: navbar"/>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-5">
+                    <div class="sidenav">
+                        <div th:object="${userAccount}">
+                            <p> Account Number {{ bankAccount }}</p>
+                            <p th:text="*{iban}"> Account Number {{ bankAccount }}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="=row">
+                <div class="col-7">
+                    <p class="color-CF6CC8 home-greeting-message">Welcome User</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
 </body>
 </html>

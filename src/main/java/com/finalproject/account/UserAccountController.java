@@ -22,10 +22,7 @@ public class UserAccountController {
 
     @GetMapping("/my_account")
     public String myAccount(Model model) {
-
         User authenticatedUser = userService.getAuthenticatedUser();
-        model.addAttribute("authenticatedUser", authenticatedUser);
-
         UserAccount userAccount = userAccountService.findByUserId(authenticatedUser.getId());
         model.addAttribute("userAccount", userAccount);
         return "my_account";
