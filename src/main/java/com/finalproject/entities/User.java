@@ -1,7 +1,8 @@
 package com.finalproject.entities;
-import org.springframework.format.annotation.DateTimeFormat;
-import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -33,11 +34,6 @@ public class User {
     public String getUpdatedOn() {
         return updatedOn;
     }
-
-
-
-
-
 
 
     public long getId() {
@@ -110,7 +106,6 @@ public class User {
     }
 
 
-
     public void setUpdatedOn(String updatedOn) {
         this.updatedOn = updatedOn;
     }
@@ -118,14 +113,4 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String updatedOn;
 
-    @Embedded
-    private UserAccount userAccount;
-
-    public UserAccount getUserAccount() {
-        return userAccount;
-    }
-
-    public void setUserAccount(UserAccount userAccount) {
-        this.userAccount = userAccount;
-    }
 }

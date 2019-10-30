@@ -1,5 +1,6 @@
 package com.finalproject.controller;
 
+import com.finalproject.account.UserAccountService;
 import com.finalproject.entities.User;
 import com.finalproject.entities.UserAccount;
 import com.finalproject.users.UserService;
@@ -8,15 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class UserController {
     private final UserService userService;
+    private UserAccountService userAccountService;
 
     @Autowired
-    public UserController(UserService userService){
+    public UserController(UserService userService, UserAccountService userAccountService){
         this.userService = userService;
+        this.userAccountService= userAccountService;
     }
 
     @GetMapping("/")
@@ -54,8 +55,20 @@ public class UserController {
     @PostMapping("/register")
     public String register(User user){
         userService.addUser(user);
+        long id = userService.getIdByUserName(user.getUserName());
+        createAccount(id,"ROPIGGY123"); //TODO generate unique Iban
+
         return "user-login";
     }
+
+    private void createAccount(long userId, String iban) {
+        UserAccount userAccount = new UserAccount();
+        userAccount.setIban(iban);
+        userAccount.setSold(0);
+        userAccount.setUserId(userId);
+        userAccountService.save(userAccount);
+    }
+
     @GetMapping("/contact")
     public String contactForm(User user) {
         return "user-contact";
@@ -66,10 +79,7 @@ public class UserController {
         return "user-account";
     }
 
-    @GetMapping("/my_account")
-    public String myAccount(UserAccount userAccount) {
-        return "my_account";
-    }
+
 
 
 }

@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>My Account</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Little Piggy Bank</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-<p> Welcome {{ name }} </p>
-<p> Account Number {{ bankAccount }}</p>
+<div th:object="${authenticatedUser}">
+
+    <p th:text="*{userName}"> Welcome {{ name }} </p>
+
+    <div th:object="${userAccount}">
+        <p> Account Number {{ bankAccount }}</p>
+        <p th:text="*{iban}"> Account Number {{ bankAccount }}</p>
+    </div>
+</div>
+
 </body>
 </html>

@@ -1,10 +1,10 @@
 package com.finalproject.users;
 
-import com.finalproject.entities.Iban;
 import com.finalproject.entities.User;
-import com.finalproject.entities.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,9 +28,7 @@ public class UserService implements UserDetailsService {
     public void addUser(User user) {
         String password = user.getPassword();
         user.setPassword(bCryptPasswordEncoder.encode(password));
-        UserAccount userAccount = new UserAccount();
-        userAccount.setBankAccount(new Iban("A","b", "c").toString());
-        user.setUserAccount(userAccount);
+
         userRepository.save(user);
     }
 
@@ -51,4 +49,18 @@ public class UserService implements UserDetailsService {
     private List getAuthority(User user) {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_" + "USER")); //TODO replase USER with user.getRole() which will return the role of an user;
     }
+
+    public User getAuthenticatedUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        UserDetails userDetails = (UserDetails) principal;
+        Optional<User> user = userRepository.findByUserName(userDetails.getUsername());
+        return user.get();
+    }
+
+    public long getIdByUserName(String userName){
+        Optional<User> byUserName = userRepository.findByUserName(userName);
+        return byUserName.get().getId();
+    }
+
 }
